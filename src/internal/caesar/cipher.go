@@ -21,21 +21,22 @@ func (c Cipher) Decrypt(text string, shifts int) string {
 	return c.shift(text, -shifts)
 }
 
-// Takes a string and shifts each character by the provided amount of letters. UTF-8 friendly.
+// Takes a string and shifts each character by the provided amount of letters. 
+// Supports unicode-based encodings.
 func (c Cipher) shift(input string, shift int) string {
 	// prevent range overflow
 	shift %= len(c.alphabet)
 	var result strings.Builder
 	for _, r := range input {
 		if idx := c.getAlphabetPos(unicode.ToLower(r)); idx >= 0 {
-			// rune is exists in alphabet
+			// rune exists in alphabet
 			isUpper := unicode.IsUpper(r)
-			// ensure we don't go negative
+			// ensure we wont't go negative
 			idx = idx + shift + len(c.alphabet)
-			// replace it with shifted rune, remainder after modulo operation
+			// replace it with the shifted rune
 			r = c.alphabet[idx%len(c.alphabet)]
 			if isUpper {
-				// if original was uppercase then change case to upper
+				// if the original rune was uppercased, then change the case to upper
 				r = unicode.ToUpper(r)
 			}
 		}
