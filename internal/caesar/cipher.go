@@ -21,7 +21,7 @@ func (c Cipher) Decrypt(text string, shifts int) string {
 	return c.shift(text, -shifts)
 }
 
-// Takes a string and shifts each character by the provided amount of letters. 
+// Takes a string and shifts each character by the provided amount of letters.
 // Supports unicode-based encodings.
 func (c Cipher) shift(input string, shift int) string {
 	// prevent range overflow

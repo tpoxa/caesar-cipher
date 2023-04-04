@@ -1,6 +1,6 @@
-Caesar cipher
+Technical challenge 
 ========================
-gRPC Server and Client
+Caesar cipher gRPC server and client
 
 Prerequisites
 ========================
@@ -9,7 +9,6 @@ Install golang and protoc compiler with gRPC plugin (https://grpc.io/docs/langua
 Build
 ========================
 ```shell
-cd src/
 make build
 ```
 
